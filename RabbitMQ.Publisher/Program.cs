@@ -4,7 +4,7 @@ using System.Text;
 using RabbitMQ.Client;
 
 var factory = new ConnectionFactory();
-factory.Uri = new Uri("amqps://yezufczr:2HVNGCOOSmA-RvngqRExiMAg1sarftye@toad.rmq.cloudamqp.com/yezufczr");
+factory.Uri = new Uri("");
 
 using var connection = factory.CreateConnection();
 
