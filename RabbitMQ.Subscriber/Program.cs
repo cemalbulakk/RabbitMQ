@@ -9,6 +9,8 @@ using var connection = factory.CreateConnection();
 
 var channel = connection.CreateModel();
 
+channel.BasicQos(0, 1, true);
+
 //channel.QueueDeclare("hello-queue", true, false, false);
 
 var consumer = new EventingBasicConsumer(channel);
@@ -20,6 +22,8 @@ consumer.Received += (sender, e) =>
     var message = Encoding.UTF8.GetString(e.Body.ToArray());
 
     Console.WriteLine(message);
+
+    channel.BasicAck(e.DeliveryTag, false);
 };
 
 Console.ReadLine();
